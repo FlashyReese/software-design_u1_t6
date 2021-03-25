@@ -1,0 +1,31 @@
+# gradle
+
+.gradle/
+build/
+out/
+classes/
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# project
+
+.cache/
+config/
+logs/
+
+users.csv
+students.csv
+subjects-grades.csv
