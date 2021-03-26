@@ -19,7 +19,7 @@ public abstract class AbstractUserInterface extends JFrame{
 
     public AbstractUserInterface(Controller controller, String title, Dimension dimension) {
         this.controller = controller;
-        this.setTitle("Control Panel");
+        this.setTitle(title);
         this.initComponents();
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.setLayout(null);
