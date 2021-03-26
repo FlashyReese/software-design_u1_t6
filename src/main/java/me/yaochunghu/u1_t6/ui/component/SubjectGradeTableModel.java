@@ -1,5 +1,6 @@
 package me.yaochunghu.u1_t6.ui.component;
 
+import me.yaochunghu.u1_t6.csv.SubjectCSV;
 import me.yaochunghu.u1_t6.model.Student;
 import me.yaochunghu.u1_t6.model.Subject;
 
@@ -7,6 +8,7 @@ import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class SubjectGradeTableModel extends AbstractTableModel {
     private final String[] columnNames = {"Matr\u00EDcula", "Nombre del estudiante", "Nombre del curso", "Calificaci\u00F3n"};
@@ -14,9 +16,21 @@ public class SubjectGradeTableModel extends AbstractTableModel {
     private final List<Student> students;
     private final List<Subject> subjects = new ArrayList<>();
 
-    public SubjectGradeTableModel(List<Student> students) {
+    private final SubjectCSV subjectCSV;
+
+    public SubjectGradeTableModel(List<Student> students, SubjectCSV subjectCSV) {
         this.students = students;
-        this.students.forEach(student -> this.subjects.add(new Subject(student.getId(), "Dise\u00F1o de software")));
+        this.subjectCSV = subjectCSV;
+
+        final List<Subject> temporalList = subjectCSV.read();
+        this.students.forEach(student -> {
+            Optional<Subject> subjectOptional = temporalList.stream().filter(subject -> subject.getId() == student.getId()).findFirst();
+            if (!subjectOptional.isPresent()) {
+                this.subjects.add(new Subject(student.getId(), "Dise\u00F1o de software"));
+            } else {
+                this.subjects.add(subjectOptional.get());
+            }
+        });
     }
 
     @Override
@@ -66,11 +80,12 @@ public class SubjectGradeTableModel extends AbstractTableModel {
                     int value = Integer.parseInt((String) aValue);
                     if (value >= 0 && value <= 100) {
                         student.setGrade(value);
+                        this.subjectCSV.save(this.subjects);
                     } else {
                         JOptionPane.showMessageDialog(null, "La calificaci\u00F3n debe estar entre 0 y 100");
                     }
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "La calificaci\u00F3n debe ser un número.");
+                    JOptionPane.showMessageDialog(null, "La calificaci\u00F3n debe ser un n\u00FAmero.");
                 }
             }
         }

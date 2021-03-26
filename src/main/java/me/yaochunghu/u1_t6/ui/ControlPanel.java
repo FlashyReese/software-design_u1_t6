@@ -48,7 +48,7 @@ public class ControlPanel extends AbstractUserInterface {
         this.gradesScrollPane = new JScrollPane();
         this.grades = new JTable();
         this.exportCSV = new JButton("Exportar");
-        this.gradeTableModel = new SubjectGradeTableModel(this.getController().getStudentCSV().read());
+        this.gradeTableModel = new SubjectGradeTableModel(this.getController().getStudentCSV().read(), this.getController().getSubjectCSV());
 
         this.tabbedPane = new JTabbedPane();
     }

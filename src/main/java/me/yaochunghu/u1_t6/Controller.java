@@ -10,6 +10,7 @@
 package me.yaochunghu.u1_t6;
 
 import me.yaochunghu.u1_t6.csv.StudentCSV;
+import me.yaochunghu.u1_t6.csv.SubjectCSV;
 import me.yaochunghu.u1_t6.csv.UserCSV;
 import me.yaochunghu.u1_t6.model.Subject;
 import me.yaochunghu.u1_t6.model.User;
@@ -27,6 +28,7 @@ import java.util.Optional;
 public class Controller {
     private final StudentCSV studentCSV = new StudentCSV();
     private final UserCSV userCSV = new UserCSV();
+    private final SubjectCSV subjectCSV = new SubjectCSV();
 
     private final Login loginFrame = new Login(this);
     private final Register registerFrame = new Register(this);
@@ -128,5 +130,9 @@ public class Controller {
 
     public UserCSV getUserCSV() {
         return userCSV;
+    }
+
+    public SubjectCSV getSubjectCSV() {
+        return subjectCSV;
     }
 }
