@@ -13,12 +13,8 @@ public class User {
     private final String username;
     private String password;
 
-    public User(String username) {
-        this.username = username;
-    }
-
     public User(String username, String password) {
-        this(username);
+        this.username = username;
         this.password = password;
     }
 

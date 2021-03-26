@@ -20,7 +20,6 @@ import me.yaochunghu.u1_t6.ui.Register;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Optional;
