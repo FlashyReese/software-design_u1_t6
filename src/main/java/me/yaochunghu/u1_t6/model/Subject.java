@@ -12,14 +12,14 @@ package me.yaochunghu.u1_t6.model;
 public class Subject {
     private final int id;
     private final String name;
-    private byte grade;
+    private Integer grade;
 
     public Subject(int id, String name) {
         this.id = id;
-        this.name = "Software Design"; //name;
+        this.name = name;
     }
 
-    public Subject(int id, String name, byte grade) {
+    public Subject(int id, String name, int grade) {
         this(id, name);
         this.grade = grade;
     }
@@ -36,11 +36,11 @@ public class Subject {
         return name;
     }
 
-    public byte getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(byte grade) {
+    public void setGrade(int grade) {
         this.grade = grade;
     }
 

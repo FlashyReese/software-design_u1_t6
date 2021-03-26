@@ -23,8 +23,8 @@ public abstract class AbstractCSV<T> {
 
     public abstract List<T> read();
 
-    public void save(T object) {
-        try (FileWriter writer = new FileWriter(this.file)) {
+    public void save(T object, boolean append) {
+        try (FileWriter writer = new FileWriter(this.file, append)) {
             String line = object.toString() + "\r\n";
             writer.write(line);
             writer.flush();
