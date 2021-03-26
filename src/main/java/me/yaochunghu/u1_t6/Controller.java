@@ -50,23 +50,23 @@ public class Controller {
                 this.controlPanelFrame.setVisible(true);
                 this.controlPanelFrame.updateInterface();
             } else {
-                JOptionPane.showMessageDialog(this.loginFrame, "Invalid password!");
+                JOptionPane.showMessageDialog(this.loginFrame, "¡Contraseña invalida!");
             }
         } else {
-            JOptionPane.showMessageDialog(this.loginFrame, "Invalid username!");
+            JOptionPane.showMessageDialog(this.loginFrame, "¡Nombre de usuario no válido!");
         }
     }
 
     public void registerUser() {
         Optional<User> userOptional = this.userCSV.read().stream().filter(user -> user.getUsername().equals(this.registerFrame.getUser().getText())).findFirst();
         if (userOptional.isPresent()) {
-            JOptionPane.showMessageDialog(this.registerFrame, "Username already taken!");
+            JOptionPane.showMessageDialog(this.registerFrame, "¡Nombre de usuario ya tomado!");
         } else {
             if (this.registerFrame.getPassword().getText().equals(this.registerFrame.getConfirmPassword().getText())) {
                 User user = new User(this.registerFrame.getUser().getText(), this.registerFrame.getPassword().getText());
                 this.userCSV.save(user, true);
                 this.currentUser = user;
-                JOptionPane.showMessageDialog(this.registerFrame, "Registration Completed!");
+                JOptionPane.showMessageDialog(this.registerFrame, "¡Registro completado!");
                 this.registerFrame.getUser().setText("");
                 this.registerFrame.getPassword().setText("");
                 this.registerFrame.getConfirmPassword().setText("");
@@ -74,14 +74,14 @@ public class Controller {
                 this.controlPanelFrame.setVisible(true);
                 this.controlPanelFrame.updateInterface();
             } else {
-                JOptionPane.showMessageDialog(this.registerFrame, "Password does not match!");
+                JOptionPane.showMessageDialog(this.registerFrame, "¡Las contraseñas no coinciden!");
             }
         }
     }
 
     public void exportGradesCSV() {
         JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Specify a file to save");
+        fileChooser.setDialogTitle("Especifique un archivo para guardar");
         FileNameExtensionFilter filter = new FileNameExtensionFilter("CSV", "csv");
         fileChooser.setFileFilter(filter);
         fileChooser.addChoosableFileFilter(filter);

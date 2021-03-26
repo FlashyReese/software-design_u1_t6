@@ -25,18 +25,18 @@ public class Register extends AbstractUserInterface {
     private JButton back;
 
     public Register(Controller controller) {
-        super(controller, "User Registration", new Dimension(424, 165));
+        super(controller, "Registro de usuario", new Dimension(424, 165));
     }
 
     protected void initComponents() {
-        this.userLabel = new JLabel("User:");
-        this.passwordLabel = new JLabel("Password:");
-        this.confirmPasswordLabel = new JLabel("Confirm Password:");
+        this.userLabel = new JLabel("Usuario:");
+        this.passwordLabel = new JLabel("Contrase\u00F1a:");
+        this.confirmPasswordLabel = new JLabel("Confirmar Contrase\u00F1a:");
         this.user = new JTextField();
         this.password = new JPasswordField();
         this.confirmPassword = new JPasswordField();
-        this.create = new JButton("Create");
-        this.back = new JButton("Back");
+        this.create = new JButton("Crear");
+        this.back = new JButton("Atr\u00E1s");
     }
 
     protected void setupComponents() {

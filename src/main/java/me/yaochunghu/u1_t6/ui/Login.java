@@ -23,16 +23,16 @@ public class Login extends AbstractUserInterface {
     private JButton register;
 
     public Login(Controller controller) {
-        super(controller, "User Login ", new Dimension(424, 135));
+        super(controller, "Inicio de sesi\u00F3n de usuario", new Dimension(424, 135));
     }
 
     protected void initComponents() {
-        this.userLabel = new JLabel("User:");
-        this.passwordLabel = new JLabel("Password:");
+        this.userLabel = new JLabel("Usuario:");
+        this.passwordLabel = new JLabel("Contrase\u00F1a:");
         this.user = new JTextField();
         this.password = new JPasswordField();
-        this.login = new JButton("Login");
-        this.register = new JButton("Register");
+        this.login = new JButton("Accesarse");
+        this.register = new JButton("Registrarse");
     }
 
     protected void setupComponents() {

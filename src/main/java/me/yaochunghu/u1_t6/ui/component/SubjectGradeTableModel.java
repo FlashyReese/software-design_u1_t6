@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubjectGradeTableModel extends AbstractTableModel {
-    private final String[] columnNames = {"ID", "Student Name", "Subject Name", "Grade"};
+    private final String[] columnNames = {"Matr\u00EDcula", "Nombre del estudiante", "Nombre del curso", "Calificaci\u00F3n"};
 
     private final List<Student> students;
     private final List<Subject> subjects = new ArrayList<>();
 
     public SubjectGradeTableModel(List<Student> students) {
         this.students = students;
-        this.students.forEach(student -> this.subjects.add(new Subject(student.getId(), "Software Design")));
+        this.students.forEach(student -> this.subjects.add(new Subject(student.getId(), "Dise\u00F1o de software")));
     }
 
     @Override
@@ -67,10 +67,10 @@ public class SubjectGradeTableModel extends AbstractTableModel {
                     if (value >= 0 && value <= 100) {
                         student.setGrade(value);
                     } else {
-                        JOptionPane.showMessageDialog(null, "The grade must be a between 0 - 100");
+                        JOptionPane.showMessageDialog(null, "La calificaci\u00F3n debe estar entre 0 y 100");
                     }
                 } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(null, "The grade must be a number.");
+                    JOptionPane.showMessageDialog(null, "La calificaci\u00F3n debe ser un número.");
                 }
             }
         }

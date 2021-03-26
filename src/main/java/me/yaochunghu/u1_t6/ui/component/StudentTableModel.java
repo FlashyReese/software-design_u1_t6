@@ -6,7 +6,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.List;
 
 public class StudentTableModel extends AbstractTableModel {
-    private final String[] columnNames = {"ID", "Names", "First Last Name", "Second Last Name"};
+    private final String[] columnNames = {"Matr\u00EDcula", "Nombres", "Apellido Paterno", "Apellido Materno"};
 
     private final List<Student> students;
 

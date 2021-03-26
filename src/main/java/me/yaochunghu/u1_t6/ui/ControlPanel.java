@@ -33,12 +33,12 @@ public class ControlPanel extends AbstractUserInterface {
     private SubjectGradeTableModel gradeTableModel;
 
     public ControlPanel(Controller controller) {
-        super(controller, "Control Panel", new Dimension(800, 600));
+        super(controller, "Panel de control", new Dimension(800, 600));
     }
 
     protected void initComponents() {
-        this.user = new JLabel("None");
-        this.logout = new JButton("Logout");
+        this.user = new JLabel("Ninguna");
+        this.logout = new JButton("Cerrar sesi\u00F3n");
 
         this.studentsTab = new JPanel();
         this.studentsScrollPane = new JScrollPane();
@@ -47,7 +47,7 @@ public class ControlPanel extends AbstractUserInterface {
         this.gradesTab = new JPanel();
         this.gradesScrollPane = new JScrollPane();
         this.grades = new JTable();
-        this.exportCSV = new JButton("Export");
+        this.exportCSV = new JButton("Exportar");
         this.gradeTableModel = new SubjectGradeTableModel(this.getController().getStudentCSV().read());
 
         this.tabbedPane = new JTabbedPane();
@@ -97,9 +97,9 @@ public class ControlPanel extends AbstractUserInterface {
         this.gradesTab.add(this.gradesScrollPane);
         this.gradesTab.add(this.exportCSV);
 
-        this.tabbedPane.addTab("Students", this.studentsTab);
+        this.tabbedPane.addTab("Estudiantes", this.studentsTab);
 
-        this.tabbedPane.addTab("Grades", this.gradesTab);
+        this.tabbedPane.addTab("Calificaciones", this.gradesTab);
 
         this.add(this.user);
         this.add(this.logout);
