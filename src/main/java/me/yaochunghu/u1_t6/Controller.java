@@ -17,6 +17,7 @@ import me.yaochunghu.u1_t6.model.User;
 import me.yaochunghu.u1_t6.ui.ControlPanel;
 import me.yaochunghu.u1_t6.ui.Login;
 import me.yaochunghu.u1_t6.ui.Register;
+import me.yaochunghu.u1_t6.util.AES;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -44,7 +45,7 @@ public class Controller {
         Optional<User> userOptional = this.userCSV.read().stream().filter(user -> user.getUsername().equals(this.loginFrame.getUser().getText())).findFirst();
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            if (user.getPassword().equals(this.loginFrame.getPassword().getText())) {
+            if (user.getPassword().equals(AES.encrypt(this.loginFrame.getPassword().getText(), this.loginFrame.getPassword().getText()))) {
                 this.currentUser = user;
                 this.loginFrame.getUser().setText("");
                 this.loginFrame.getPassword().setText("");
@@ -52,23 +53,23 @@ public class Controller {
                 this.controlPanelFrame.setVisible(true);
                 this.controlPanelFrame.updateInterface();
             } else {
-                JOptionPane.showMessageDialog(this.loginFrame, "¡Contraseña invalida!");
+                JOptionPane.showMessageDialog(this.loginFrame, "\u00A1Contrase\u00F1a invalida!");
             }
         } else {
-            JOptionPane.showMessageDialog(this.loginFrame, "¡Nombre de usuario no válido!");
+            JOptionPane.showMessageDialog(this.loginFrame, "\u00A1Nombre de usuario no v\u00E1lido!");
         }
     }
 
     public void registerUser() {
         Optional<User> userOptional = this.userCSV.read().stream().filter(user -> user.getUsername().equals(this.registerFrame.getUser().getText())).findFirst();
         if (userOptional.isPresent()) {
-            JOptionPane.showMessageDialog(this.registerFrame, "¡Nombre de usuario ya tomado!");
+            JOptionPane.showMessageDialog(this.registerFrame, "\u00A1Nombre de usuario ya tomado!");
         } else {
             if (this.registerFrame.getPassword().getText().equals(this.registerFrame.getConfirmPassword().getText())) {
-                User user = new User(this.registerFrame.getUser().getText(), this.registerFrame.getPassword().getText());
+                User user = new User(this.registerFrame.getUser().getText(), AES.encrypt(this.registerFrame.getPassword().getText(), this.registerFrame.getPassword().getText()));
                 this.userCSV.save(user, true);
                 this.currentUser = user;
-                JOptionPane.showMessageDialog(this.registerFrame, "¡Registro completado!");
+                JOptionPane.showMessageDialog(this.registerFrame, "\u00A1Registro completado!");
                 this.registerFrame.getUser().setText("");
                 this.registerFrame.getPassword().setText("");
                 this.registerFrame.getConfirmPassword().setText("");
@@ -76,7 +77,7 @@ public class Controller {
                 this.controlPanelFrame.setVisible(true);
                 this.controlPanelFrame.updateInterface();
             } else {
-                JOptionPane.showMessageDialog(this.registerFrame, "¡Las contraseñas no coinciden!");
+                JOptionPane.showMessageDialog(this.registerFrame, "\u00A1Las contrase\u00F1as no coinciden!");
             }
         }
     }

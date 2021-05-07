@@ -12,20 +12,20 @@ package me.yaochunghu.u1_t6.model;
 public class Subject {
     private final int id;
     private final String name;
-    private Integer grade;
+    private Float grade;
 
     public Subject(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Subject(int id, String name, int grade) {
+    public Subject(int id, String name, float grade) {
         this(id, name);
         this.grade = grade;
     }
 
     public Subject(String[] data) {
-        this(Integer.parseInt(data[0]), data[1], Byte.parseByte(data[2]));
+        this(Integer.parseInt(data[0]), data[1], Float.parseFloat(data[2]));
     }
 
     public int getId() {
@@ -36,11 +36,11 @@ public class Subject {
         return name;
     }
 
-    public Integer getGrade() {
+    public Float getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(float grade) {
         this.grade = grade;
     }
 

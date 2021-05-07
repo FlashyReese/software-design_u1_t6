@@ -77,7 +77,7 @@ public class SubjectGradeTableModel extends AbstractTableModel {
         if (columnIndex == 3) {
             if (aValue instanceof String) {
                 try {
-                    int value = Integer.parseInt((String) aValue);
+                    float value = Float.parseFloat((String) aValue);
                     if (value >= 0 && value <= 100) {
                         student.setGrade(value);
                         this.subjectCSV.save(this.subjects);
